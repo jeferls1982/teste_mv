@@ -9,7 +9,7 @@
 
 <h3>Instalação</h3>
 
-<h4>Certifique-se que a <a href="http://localhost:8081](https://github.com/jeferls1982/api_cardapio_mv/blob/main/README.md)">api_cardapios_mv</a> está rodando na porta 9000</h4>
+<h4>Certifique-se que a <a href="https://github.com/jeferls1982/api_cardapio_mv">api_cardapios_mv</a> está rodando na porta 9000</h4>
 
 <p>1 - Abra um terminal e rode os comandos:</p>
 <p><code>git clone https://github.com/jeferls1982/teste_mv.git</code></p>
