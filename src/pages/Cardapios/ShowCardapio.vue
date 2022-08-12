@@ -38,7 +38,11 @@
         </p>
       </div>
     </div>
-    <form-add-items v-if="show_checkbox_items" @setItems="setItems" />
+    <form-add-items
+      @closeInfo="closeInfo"
+      v-if="show_checkbox_items"
+      @setItems="setItems"
+    />
   </div>
 </template>
 

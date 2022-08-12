@@ -32,6 +32,8 @@ export default {
   methods: {
     setItemsCardapio() {
       this.$emit("setItems", this.selected);
+      this.$emit("closeInfo");
+      alert("Itens adicionados");
     },
   },
   computed: {
