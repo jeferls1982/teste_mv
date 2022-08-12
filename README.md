@@ -17,3 +17,5 @@
 <p><code>npm install</code></p>
 
 <p><code>yarn serve</code></p>
+
+<p>acesse o endereço http://localhost:8081/ </p>
