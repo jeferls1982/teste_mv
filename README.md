@@ -1,29 +1,8 @@
-# README #
+<h1>Projeto Cardapios</h1>
 
-Projeto Cardapios.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact"# teste_mv" 
+<h3>Desenvolvido com :</h3>
+<p>* vue.js</p>
+<p>* vue-router</p>
+<p>* vuex</p>
+<p>* axios</p>
+<p>* Bootstrap 5</p>
