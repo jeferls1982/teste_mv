@@ -21,3 +21,7 @@
 <p><code>yarn serve</code></p>
 
 <p>acesse o endereço que vai aparecer no terminal ou  <a href="http://localhost:8081">localhost</a> </p>
+
+<p>Para acessar o sistema use o email:</p>
+
+<p>admin@email.com  senha 1234</p>
