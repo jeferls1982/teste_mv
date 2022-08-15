@@ -25,3 +25,5 @@
 <p>Para acessar o sistema use o email:</p>
 
 <p>admin@email.com  senha 1234</p>
+
+<b>OBS: Por enquanto a só implementei o update nos usuários</b>
