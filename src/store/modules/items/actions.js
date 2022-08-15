@@ -26,6 +26,15 @@ export default {
                 console.log(e);
             }).finally()
     },
+    updateItem(context, item) {
+        axios.put(`${base_url}/items/${item.id}`, item)
+            .then(() => {
+                this.commit('LOAD_ITEMS');
+            })
+            .catch((e) => {
+                console.log(e);
+            }).finally()
+    }
 
 
 }

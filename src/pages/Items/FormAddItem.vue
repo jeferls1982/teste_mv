@@ -40,6 +40,7 @@ export default {
       };
       this.$store.dispatch("addItem", data);
       this.clearForm();
+      this.$emit("closeForm");
     },
     clearForm() {
       this.nome = null;

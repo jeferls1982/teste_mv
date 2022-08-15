@@ -9,7 +9,7 @@
       </button>
       <span class="h5"> Usuários </span>
     </div>
-    <form-add-user v-if="show_form" />
+    <form-add-user @closeForm="closeForm" v-if="show_form" />
     <form-edit-user
       @closeEdit="closeEdit"
       v-if="show_edit"
@@ -55,6 +55,9 @@ export default {
     },
     closeEdit() {
       this.show_edit = false;
+    },
+    closeForm() {
+      this.show_form = false;
     },
   },
 };

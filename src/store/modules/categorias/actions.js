@@ -26,6 +26,15 @@ export default {
                 console.log(e);
             }).finally()
     },
+    updateCategoria(context, item) {
+        axios.put(`${base_url}/categorias/${item.id}`, item)
+            .then(() => {
+                this.commit('LOAD_CATEGORIAS');
+            })
+            .catch((e) => {
+                console.log(e);
+            }).finally()
+    }
 
 
 }

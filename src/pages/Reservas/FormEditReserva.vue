@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="addReserva()" class="row g-3 needs-validation">
+    <form @submit.prevent="updateReserva()" class="row g-3 needs-validation">
       <div class="col-md-6">
         <label for="data" class="form-label">Data</label>
         <input
@@ -12,7 +12,7 @@
         />
       </div>
       <div class="col-md-6">
-        <label for="hora" class="form-label">Password</label>
+        <label for="hora" class="form-label">Horários</label>
         <input v-model="hora" type="time" class="form-control" id="hora" />
       </div>
       <div class="col-12">
@@ -48,7 +48,11 @@
       <div class="col-md-4">
         <label for="inputState" class="form-label">Cardápio</label>
         <select v-model="cardapio_id" id="inputState" class="form-select">
-          <option v-for="item in getCardapios" :key="item.id" :value="item.id">
+          <option
+            v-for="item in getCardapios"
+            :key="item.id"
+            :value="cardapio_id"
+          >
             {{ item.titulo }}
           </option>
           <option value="1" selected>Selecione...</option>
@@ -56,7 +60,7 @@
       </div>
 
       <div class="col-12">
-        <button type="submit" class="btn btn-secondary">Confirmar</button>
+        <button type="submit" class="btn btn-primary">Update</button>
         <span @click="closeForm()" class="btn btn-default mx-5"> Fechar </span>
       </div>
     </form>
@@ -65,19 +69,22 @@
 
 <script>
 export default {
+  props: [
+    "id",
+    "data",
+    "hora",
+    "nome_reserva",
+    "contato",
+    "qtd_pessoas",
+    "cardapio_id",
+  ],
   data() {
-    return {
-      data: null,
-      hora: null,
-      contato: null,
-      nome_reserva: null,
-      qtd_pessoas: 1,
-      cardapio_id: 1,
-    };
+    return {};
   },
   methods: {
-    addReserva() {
+    updateReserva() {
       var data = {
+        id: this.id,
         data: this.data,
         hora: this.hora,
         qtd_pessoas: this.qtd_pessoas,
@@ -85,7 +92,7 @@ export default {
         cardapio_id: this.cardapio_id,
         nome_reserva: this.nome_reserva,
       };
-      this.$store.dispatch("addReserva", data);
+      this.$store.dispatch("updateReserva", data);
       this.$emit("closeForm");
     },
     closeForm() {

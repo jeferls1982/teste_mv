@@ -29,6 +29,9 @@
             Adicionar Ingredientes
           </button>
           <button @click="closeInfo()" class="btn mx-3">Fechar</button>
+          <button @click="editCardapio(cardapio)" class="btn mx-3">
+            Editar
+          </button>
           <button
             @click="deleteCardapio(cardapio.id)"
             class="btn text-danger mx-3"
@@ -66,6 +69,9 @@ export default {
 
       this.$store.dispatch("addItemsCardapios", data);
       this.$emit("closeDetails");
+    },
+    editCardapio(item) {
+      this.$emit("editCardapio", item);
     },
     closeInfo() {
       this.$emit("closeInfo");

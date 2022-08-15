@@ -1,6 +1,6 @@
 <template>
   <div class="card my-3 p-3">
-    <form @submit.prevent="addCategoria()">
+    <form @submit.prevent="updateCategoria()">
       <div class="input-group">
         <input
           type="text"
@@ -9,8 +9,8 @@
           class="form-control"
           v-model="nome"
         />
-        <button type="submit" class="input-group-text btn btn-secondary">
-          Adicionar
+        <button type="submit" class="input-group-text btn btn-primary">
+          Update
         </button>
       </div>
     </form>
@@ -19,17 +19,18 @@
 
 <script>
 export default {
+  props: ["nome", "id"],
   data() {
-    return {
-      nome: null,
-    };
+    return {};
   },
   methods: {
-    addCategoria() {
+    updateCategoria() {
       var data = {
         nome: this.nome,
+        id: this.id,
       };
-      this.$store.dispatch("addCategoria", data);
+
+      this.$store.dispatch("updateCategoria", data);
       this.clearForm();
       this.$emit("closeForm");
     },

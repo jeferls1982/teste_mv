@@ -10,15 +10,19 @@
       </button>
       <span class="h5"> Itens </span>
     </div>
-    <form-add-item v-if="show_form" />
+    <form-add-item @closeForm="closeForm" v-if="show_form" />
     <form-edit-item
-      @editItem="editItem"
+      @closeForm="closeForm"
       v-if="show_edit"
       :id="item.id"
       :nome="item.nome"
       :calorias="item.calorias"
     />
-    <table-component :headers="headers" :items="getItems" />
+    <table-component
+      @editItem="editItem"
+      :headers="headers"
+      :items="getItems"
+    />
   </div>
 </template>
 
@@ -38,10 +42,13 @@ export default {
   },
   methods: {
     editItem(item) {
-      alert("adskfh");
       this.item = item;
       this.show_form = false;
       this.show_edit = true;
+    },
+    closeForm() {
+      this.show_form = false;
+      this.show_edit = false;
     },
   },
   computed: {

@@ -48,6 +48,18 @@ export default {
                 console.log(e);
             }).finally()
     },
+    updateCardapio(context, data) {
+        console.log(data);
+        axios.put(`${base_url}/cardapios/${data.id}`, data)
+            .then((response) => {
+                console.log(response);
+                this.commit('LOAD_CARDAPIOS');
+                this.commit('LOAD_CATEGORIAS');
+            })
+            .catch((e) => {
+                console.log(e);
+            }).finally()
+    }
 
 
 }

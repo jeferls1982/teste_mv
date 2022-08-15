@@ -60,33 +60,30 @@
       />
     </div>
     <div class="mt-3">
-      <button @click="addCardapio()" class="btn btn-success">Adicionar</button>
+      <button @click="updateCardapio()" class="btn btn-primary">Update</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ["id", "foto", "titulo", "descricao", "categoria_id", "preco"],
   data() {
-    return {
-      foto: null,
-      titulo: null,
-      descricao: null,
-      categoria_id: null,
-      preco: null,
-    };
+    return {};
   },
   methods: {
-    addCardapio() {
+    updateCardapio() {
       var data = {
+        id: this.id,
         titulo: this.titulo,
         preco: this.preco,
         descricao: this.descricao,
         categoria_id: this.categoria_id,
         foto: this.foto,
       };
-      this.$store.dispatch("addCardapio", data);
+      this.$store.dispatch("updateCardapio", data);
       this.clearForm();
+      this.$emit("closeForm");
     },
     clearForm() {
       this.titulo = null;

@@ -28,7 +28,7 @@
           {{ item.cardapio.titulo }}
         </td>
         <td class="actions">
-          <span><pen /></span>
+          <span @click="editReserva(item)"><pen /></span>
           <span @click="deleteReserva(item.id)"><trash /></span>
         </td>
       </tr>
@@ -46,6 +46,9 @@ export default {
   methods: {
     deleteReserva(id) {
       this.$store.dispatch("deleteReserva", id);
+    },
+    editReserva(item) {
+      this.$emit("editReserva", item);
     },
     formatData(data) {
       return moment(data).format("DD/MM/YYYY");

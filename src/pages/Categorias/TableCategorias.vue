@@ -17,7 +17,7 @@
           {{ item.cardapios.length }}
         </td>
         <td v-if="userAdmin" class="actions">
-          <span><pen /></span>
+          <span @click="editCategoria(item)"><pen /></span>
           <span @click="deleteCategoria(item.id)"><trash /></span>
         </td>
       </tr>
@@ -33,6 +33,9 @@ export default {
   methods: {
     deleteCategoria(id) {
       this.$store.dispatch("deleteCategoria", id);
+    },
+    editCategoria(item) {
+      this.$emit("editCategoria", item);
     },
   },
   props: ["headers", "items"],

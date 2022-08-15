@@ -10,14 +10,14 @@
           v-model="nome"
         />
         <input
-          type="number"
+          type="string"
           aria-label="Last name"
           placeholder="Calorias"
           class="form-control"
           v-model="calorias"
         />
         <button type="submit" class="input-group-text btn btn-secondary">
-          Adicionar
+          Update
         </button>
       </div>
     </form>
@@ -33,11 +33,13 @@ export default {
   methods: {
     addItem() {
       var data = {
+        id: this.id,
         nome: this.nome,
         calorias: this.calorias,
       };
-      this.$store.dispatch("addItem", data);
+      this.$store.dispatch("updateItem", data);
       this.clearForm();
+      this.$emit("closeForm");
     },
     clearForm() {
       this.nome = null;

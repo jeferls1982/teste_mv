@@ -70,7 +70,7 @@
 export default {
   data() {
     return {
-      nome: null,
+      name: null,
       email: null,
       password: null,
       user_type: 2,
@@ -86,6 +86,7 @@ export default {
       };
       this.$store.dispatch("addUser", data);
       this.clearForm();
+      this.$emit("closeForm");
     },
     clearForm() {
       this.name = null;
