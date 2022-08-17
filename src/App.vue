@@ -32,6 +32,6 @@ export default {
 
 <style>
 .conteudo {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 </style>

@@ -1,13 +1,23 @@
 <template>
   <div>
-    <div class="alert alert-dark" role="alert">
+    <div class="d-flex justify-content-between alert alert-dark" role="alert">
+      <span class="h5"> Reservas </span>
       <button
-        v-if="getUser"
+        v-if="show_form"
         class="btn btn-sm btn-secondary"
         @click="(show_form = !show_form), (show_edit = false)"
       >
-        Add</button
-      ><span class="h5"> Reservas </span>
+        <top />
+      </button>
+      <span v-else>
+        <button
+          v-if="getUser"
+          class="btn btn-sm btn-secondary"
+          @click="(show_form = !show_form), (show_edit = false)"
+        >
+          Add
+        </button>
+      </span>
     </div>
     <form-add-reserva
       v-if="show_form"
@@ -35,14 +45,16 @@
 </template>
 
 <script>
+import Top from "../../icons/Top.vue";
 import FormAddReserva from "./FormAddReserva.vue";
 import FormEditReserva from "./FormEditReserva.vue";
 import TableReservas from "./TableReservas.vue";
 
 export default {
-  components: { TableReservas, FormAddReserva, FormEditReserva },
+  components: { TableReservas, FormAddReserva, FormEditReserva, Top },
   data() {
     return {
+      text_btn: "Add",
       show_form: false,
       show_edit: false,
       headers: [

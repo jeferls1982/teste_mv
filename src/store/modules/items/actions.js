@@ -11,6 +11,7 @@ export default {
     addItem(context, data) {
         axios.post(`${base_url}/items`, data)
             .then(() => {
+                alert("Item adicionado")
                 this.commit('LOAD_ITEMS')
             })
             .catch((e) => {
@@ -20,6 +21,7 @@ export default {
     deleteItem(context, id) {
         axios.delete(`${base_url}/items/${id}`)
             .then(() => {
+                alert("Item excluido")
                 this.commit('LOAD_ITEMS');
             })
             .catch((e) => {

@@ -11,6 +11,7 @@ export default {
     addReserva(context, data) {
         axios.post(`${base_url}/reservas`, data)
             .then(() => {
+                alert("Reserva cadastrada.")
                 this.commit('LOAD_RESERVAS');
 
             })
@@ -20,8 +21,8 @@ export default {
     },
     deleteReserva(context, id) {
         axios.delete(`${base_url}/reservas/${id}`)
-            .then((response) => {
-                console.log(response);
+            .then(() => {
+                alert("Reserva excluida.")
                 this.commit('LOAD_RESERVAS');
             })
             .catch((e) => {

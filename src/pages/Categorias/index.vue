@@ -1,14 +1,24 @@
 <template>
   <div>
-    <div class="alert alert-info" role="alert">
+    <div class="d-flex justify-content-between alert alert-info" role="alert">
+      <span class="h5"> Categorias </span>
       <button
-        v-if="userAdmin"
+        v-if="show_form"
         class="btn btn-sm btn-secondary"
         @click="(show_form = !show_form), (show_edit = false)"
       >
-        Add
+        <top />
       </button>
-      <span class="h5"> Categorias </span>
+
+      <span v-else>
+        <button
+          v-if="userAdmin"
+          class="btn btn-sm btn-secondary"
+          @click="(show_form = !show_form), (show_edit = false)"
+        >
+          Add
+        </button>
+      </span>
     </div>
 
     <form-add-categoria @closeForm="closeForm" v-if="show_form" />
@@ -23,11 +33,12 @@
 </template>
 
 <script>
+import Top from "../../icons/Top.vue";
 import FormAddCategoria from "./FormAddCategoria.vue";
 import FormEditCategoria from "./FormEditCategoria.vue";
 import TableCategorias from "./TableCategorias.vue";
 export default {
-  components: { TableCategorias, FormAddCategoria, FormEditCategoria },
+  components: { TableCategorias, FormAddCategoria, FormEditCategoria, Top },
   data() {
     return {
       show_form: false,

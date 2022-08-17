@@ -1,5 +1,8 @@
 <template>
   <div class="card my-3 p-3">
+    <ul class="text-danger">
+      <li v-for="erro in errors" :key="erro">{{ erro }}</li>
+    </ul>
     <form @submit.prevent="addUser()" class="row g-3">
       <div class="col-md-12">
         <label for="Nome" class="form-label">Nome</label>
@@ -74,19 +77,56 @@ export default {
       email: null,
       password: null,
       user_type: 2,
+      errors: [],
     };
   },
   methods: {
+    validateForm() {
+      if (!this.name) {
+        this.errors.push("O nome é obrigatório.");
+      }
+      if (!this.email) {
+        this.errors.push("O e-mail é obrigatório.");
+      }
+      if (!this.password) {
+        this.errors.push("O password é obrigatório.");
+      }
+      if (!this.user_type) {
+        this.errors.push("O user type é obrigatório.");
+      }
+
+      if (this.errors.length > 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    resetErrors() {
+      if (
+        this.name != "" &&
+        this.email != "" &&
+        this.password &&
+        this.user_type != ""
+      ) {
+        true;
+      }
+      return false;
+    },
     addUser() {
-      var data = {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-        user_type: this.user_type,
-      };
-      this.$store.dispatch("addUser", data);
-      this.clearForm();
-      this.$emit("closeForm");
+      this.errors = [];
+      if (this.validateForm()) {
+        var data = {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          user_type: this.user_type,
+        };
+
+        this.$store.dispatch("addUser", data);
+
+        this.clearForm();
+        this.$emit("closeForm");
+      }
     },
     clearForm() {
       this.name = null;

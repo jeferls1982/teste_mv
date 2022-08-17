@@ -11,6 +11,7 @@ export default {
     addCategoria(context, data) {
         axios.post(`${base_url}/categorias`, data)
             .then(() => {
+                alert("Categoria adicionada.")
                 this.commit('LOAD_CATEGORIAS');
             })
             .catch((e) => {
@@ -20,6 +21,7 @@ export default {
     deleteCategoria(context, id) {
         axios.delete(`${base_url}/categorias/${id}`)
             .then(() => {
+                alert("Categoria excluida.")
                 this.commit('LOAD_CATEGORIAS');
             })
             .catch((e) => {

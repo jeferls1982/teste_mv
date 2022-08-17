@@ -1,7 +1,12 @@
 <template>
   <nav class="navbar navbar-expand-sm bg-light fixed-top">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="cardapios">Cardapios</router-link>
+      <span v-if="getUser">
+        <router-link class="navbar-brand" to="cardapios">Cardapios</router-link>
+      </span>
+      <span v-else>
+        <router-link class="navbar-brand" to="/">Cardapios</router-link>
+      </span>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">

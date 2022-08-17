@@ -1,14 +1,26 @@
 <template>
   <div>
-    <div class="alert alert-primary" role="alert">
+    <div
+      class="d-flex justify-content-between alert alert-primary"
+      role="alert"
+    >
+      <span class="h5"> Itens </span>
       <button
-        v-if="userAdmin"
         class="btn btn-sm btn-secondary"
         @click="show_form = !show_form"
+        v-if="show_form"
       >
-        Add
+        <top />
       </button>
-      <span class="h5"> Itens </span>
+      <span v-else>
+        <button
+          v-if="userAdmin"
+          class="btn btn-sm btn-secondary"
+          @click="show_form = !show_form"
+        >
+          Add
+        </button>
+      </span>
     </div>
     <form-add-item @closeForm="closeForm" v-if="show_form" />
     <form-edit-item
@@ -27,11 +39,12 @@
 </template>
 
 <script>
+import Top from "../../icons/Top.vue";
 import FormAddItem from "./FormAddItem.vue";
 import FormEditItem from "./FormEditItem.vue";
 import TableComponent from "./TableItems.vue";
 export default {
-  components: { TableComponent, FormAddItem, FormEditItem },
+  components: { TableComponent, FormAddItem, FormEditItem, Top },
   data() {
     return {
       show_form: false,

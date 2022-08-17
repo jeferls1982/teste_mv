@@ -1,15 +1,12 @@
 <template>
   <div>
-    <form @submit.prevent="addReserva()" class="row g-3 needs-validation">
+    <ul>
+      <li v-for="erro in errors" :key="erro">{{ erro }}</li>
+    </ul>
+    <form @submit.prevent="addReserva()" class="row g-3">
       <div class="col-md-6">
         <label for="data" class="form-label">Data</label>
-        <input
-          v-model="data"
-          type="date"
-          class="form-control"
-          id="data"
-          required
-        />
+        <input v-model="data" type="date" class="form-control" id="data" />
       </div>
       <div class="col-md-6">
         <label for="hora" class="form-label">Password</label>
@@ -72,10 +69,36 @@ export default {
       contato: null,
       nome_reserva: null,
       qtd_pessoas: 1,
-      cardapio_id: 1,
+      cardapio_id: null,
+      errors: [],
     };
   },
   methods: {
+    validateForm() {
+      if (!this.data) {
+        this.errors.push("A data é obrigatória");
+      }
+      if (!this.hora) {
+        this.errors.push("A hora é obrigatória");
+      }
+      if (!this.contato) {
+        this.errors.push("O contato é obrigatória");
+      }
+      if (!this.nome_reserva) {
+        this.errors.push("O nome_reserva é obrigatória");
+      }
+      if (!this.qtd_pessoas) {
+        this.errors.push("A qtd_pessoas é obrigatória");
+      }
+      if (!this.cardapio_id) {
+        this.errors.push("O cardápio é obrigatória");
+      }
+      if (this.errors.length > 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
     addReserva() {
       var data = {
         data: this.data,
@@ -85,8 +108,11 @@ export default {
         cardapio_id: this.cardapio_id,
         nome_reserva: this.nome_reserva,
       };
-      this.$store.dispatch("addReserva", data);
-      this.$emit("closeForm");
+      this.errors = [];
+      if (this.validateForm()) {
+        this.$store.dispatch("addReserva", data);
+        this.$emit("closeForm");
+      }
     },
     closeForm() {
       this.$emit("closeForm");

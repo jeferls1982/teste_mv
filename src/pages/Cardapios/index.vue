@@ -1,14 +1,27 @@
 <template>
   <div>
-    <div v-if="getUser" class="alert alert-default" role="alert">
+    <div
+      v-if="getUser"
+      class="d-flex justify-content-between alert alert-default"
+      role="alert"
+    >
+      <span class="h5"> Cardapios </span>
       <button
-        v-if="userAdmin"
+        v-if="show_form"
         class="btn btn-sm btn-secondary"
         @click="(show_form = !show_form), (show_edit = false)"
       >
-        Add
+        <top />
       </button>
-      <span class="h5"> Cardapios </span>
+      <span v-else>
+        <button
+          v-if="userAdmin"
+          class="btn btn-sm btn-secondary"
+          @click="(show_form = !show_form), (show_edit = false)"
+        >
+          Add
+        </button>
+      </span>
     </div>
     <show-cardapio
       @editCardapio="editCardapio"
@@ -33,6 +46,7 @@
 </template>
 
 <script>
+import Top from "../../icons/Top.vue";
 import FormAddCardapio from "./FormAddCardapio.vue";
 import FormEditCardapio from "./FormEditCardapio.vue";
 import GridCardapios from "./GridCardapios.vue";
@@ -44,6 +58,7 @@ export default {
     FormAddCardapio,
     ShowCardapio,
     FormEditCardapio,
+    Top,
   },
   data() {
     return {

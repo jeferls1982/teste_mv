@@ -1,13 +1,24 @@
 <template>
   <div>
-    <div class="alert alert-success" role="alert">
+    <div
+      class="d-flex justify-content-between alert alert-success"
+      role="alert"
+    >
+      <span class="h5"> Usuários </span>
+      <button
+        v-if="show_form"
+        @click="(show_form = !show_form), (show_edit = false)"
+        class="btn btn-sm btn-secondary"
+      >
+        <top />
+      </button>
       <button
         class="btn btn-sm btn-secondary"
+        v-else
         @click="(show_form = !show_form), (show_edit = false)"
       >
         Add
       </button>
-      <span class="h5"> Usuários </span>
     </div>
     <form-add-user @closeForm="closeForm" v-if="show_form" />
     <form-edit-user
@@ -24,11 +35,12 @@
 </template>
 
 <script>
+import Top from "../../icons/Top.vue";
 import FormAddUser from "./FormAddUser.vue";
 import FormEditUser from "./FormEditUser.vue";
 import TableUsuarios from "./TableUsuarios.vue";
 export default {
-  components: { TableUsuarios, FormAddUser, FormEditUser },
+  components: { TableUsuarios, FormAddUser, FormEditUser, Top },
   data() {
     return {
       show_form: false,

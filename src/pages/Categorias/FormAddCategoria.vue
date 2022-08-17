@@ -1,5 +1,8 @@
 <template>
   <div class="card my-3 p-3">
+    <ul class="text-danger">
+      <li v-for="erro in errors" :key="erro">{{ erro }}</li>
+    </ul>
     <form @submit.prevent="addCategoria()">
       <div class="input-group">
         <input
@@ -22,16 +25,30 @@ export default {
   data() {
     return {
       nome: null,
+      errors: [],
     };
   },
   methods: {
+    validateForm() {
+      if (!this.nome) {
+        this.errors.push("O nome é obrigatório");
+      }
+      if (this.errors.length > 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
     addCategoria() {
       var data = {
         nome: this.nome,
       };
-      this.$store.dispatch("addCategoria", data);
-      this.clearForm();
-      this.$emit("closeForm");
+      this.errors = [];
+      if (this.validateForm()) {
+        this.$store.dispatch("addCategoria", data);
+        this.clearForm();
+        this.$emit("closeForm");
+      }
     },
     clearForm() {
       this.nome = null;

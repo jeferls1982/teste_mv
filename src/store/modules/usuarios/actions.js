@@ -11,11 +11,14 @@ export default {
     addUser(context, data) {
         axios.post(`${base_url}/users`, data)
             .then(() => {
-
+                alert("Adicionado com sucesso!");
                 this.commit('LOAD_USUARIOS');
             })
             .catch((e) => {
-                console.log(e);
+                if (e.code == "ERR_BAD_RESPONSE") {
+                    alert("Email em uso!!")
+                }
+                console.log(e.code);
             }).finally()
     },
 
